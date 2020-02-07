@@ -223,8 +223,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401334796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3811, y: -2.1731, z: 0}
-  m_LocalScale: {x: 3.7656, y: 1.971, z: 1}
+  m_LocalPosition: {x: 0.247, y: -2.1731, z: 0}
+  m_LocalScale: {x: 6.3939886, y: 1.971, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -322,6 +322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1342426945}
   - component: {fileID: 1342426944}
+  - component: {fileID: 1342426947}
   - component: {fileID: 1342426946}
   - component: {fileID: 1342426943}
   - component: {fileID: 1342426942}
@@ -346,6 +347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpHeight: 4
   timeToJumpApex: 0.4
+  moveSpeed: 6
 --- !u!114 &1342426943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,6 +455,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1342426947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342426941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c032ed65f6cc48e44bf6eddb0be98232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCircle: {fileID: 3947402827886207310, guid: d6ecb9ddea735d1449e8b7af2eb7d991,
+    type: 3}
+  player: {fileID: 1342426941}
 --- !u!1 &1424276654
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,7 +572,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1424276654}
   m_LocalRotation: {x: 0, y: 0, z: 0.41469327, w: 0.9099613}
-  m_LocalPosition: {x: 0.55, y: -2.1731, z: 0}
+  m_LocalPosition: {x: 6.18, y: -2.15, z: 0}
   m_LocalScale: {x: 3.7656, y: 1.971, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
