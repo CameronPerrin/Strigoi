@@ -4,9 +4,13 @@ using System.Collections;
 [RequireComponent (typeof (Controller2D))]
 public class Player : MonoBehaviour {
 
+	private bool m_FacingRight = true;
+	private float move;
+
 	public float jumpHeight = 4;
 	public float timeToJumpApex = .4f;
 	public float moveSpeed = 6;
+	public float health = 50;
 	float accelerationTimeAirborne = .2f;
 	float accelerationTimeGrounded = .1f;
 	
@@ -24,17 +28,20 @@ public class Player : MonoBehaviour {
 		gravity = -(2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
 		jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
 		print ("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
+		
 	}
 
-	void Update() {
-
+	void Update() 
+	{
+		move = Input.GetAxisRaw("Horizontal");
 		if (controller.collisions.above || controller.collisions.below) {
 			velocity.y = 0;
 		}
 
 		Vector2 input = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
 
-		if (Input.GetKeyDown (KeyCode.Space) && controller.collisions.below) {
+		if (Input.GetKeyDown (KeyCode.Space) && controller.collisions.below)
+		{
 			velocity.y = jumpVelocity;
 		}
 
@@ -42,5 +49,33 @@ public class Player : MonoBehaviour {
 		velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
 		velocity.y += gravity * Time.deltaTime;
 		controller.Move (velocity * Time.deltaTime);
+
+		if (move > 0 && !m_FacingRight)
+      	{
+        	Flip();
+      	}
+      	else if(move < 0 && m_FacingRight)
+      	{
+      		Flip();
+      	}
+	}
+
+	private void Flip()
+ 	{
+    	// Switch the way the player is labelled as facing.
+    	m_FacingRight = !m_FacingRight;
+
+    	// Multiply the player's x local scale by -1.
+    	Vector3 theScale = transform.localScale;
+    	theScale.x *= -1;
+    	transform.localScale = theScale;
+  	}
+
+  	// Take damage
+  	public void TakeDamage(int damage)
+	{
+		health -= damage;
+		// Use to spawn blood on hit: 
+		// Instantiate(bloodVFX, transform.position, Quaternion,identity);
 	}
 }

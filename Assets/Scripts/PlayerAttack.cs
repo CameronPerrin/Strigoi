@@ -5,30 +5,56 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public GameObject attackCircle;
-    public GameObject player;
-    private Vector3 playerPos;
-    private Vector3 tempVector;
+    public Transform attackPos;
+    public LayerMask whatIsEnemies;
+    public float CoolDownAmount = 1;
+    public float attackRange;
+    public int damage;
+   
+    private float cd = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        playerPos = player.transform.position;
-    }
 
     // Update is called once per frame
     void Update()
     {
-        playerPos = player.transform.position;
-        if (Input.GetAxisRaw("Fire1") > 0)
+        // Initiate attack based off Cool Down first
+        if(cd <= 0)
         {
-            Attack();
-        } 
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                // Use this to trigger player animation:
+                // playerAnim.SetTrigger("attack");
+
+                // Creates a collider at player attack position (which is created outside the
+                // the script as a gameObject). Range is the radius of the circle. What is Enemies
+                // detects a certain type of object as an enemy.
+                Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
+                // Loop for each enemy detected, this could be modified to fit only a certain amount
+                // at a time. Ex 4 enemies when it detected 5.
+                for(int i = 0; i < enemiesToDamage.Length; i++)
+                {
+                    // First enemy measured, grabs the script associated with the enemy
+                    // and deals damage to them.
+                    enemiesToDamage[i].GetComponent<BasicEnemy>().TakeDamage(damage);
+                }
+                // reset cool down
+                cd = CoolDownAmount;
+            }         
+        }
+        else
+        {
+            // after cool down is set, start counting down in real seconds.
+            cd -= Time.deltaTime;
+        }
     }
 
-    void Attack()
+    // Used to visually represent the size of the collision circle spawned.
+    void OnDrawGizmosSelected()
     {
-        tempVector = new Vector3(playerPos.x+1, playerPos.y, playerPos.z);
-        Instantiate(attackCircle, tempVector, player.transform.rotation);
+        Gizmos.color = Color.red;
+
+        // is located at game object position and is modified with the circle radius,
+        // "attack range".
+        Gizmos.DrawWireSphere(attackPos.position, attackRange);
     }
 }
