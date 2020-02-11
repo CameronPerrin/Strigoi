@@ -1,16 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 [RequireComponent (typeof (Controller2D))]
 public class Player : MonoBehaviour {
 
 	private bool m_FacingRight = true;
 	private float move;
+	private float health;
 
+	public Image healthOrb;
 	public float jumpHeight = 4;
 	public float timeToJumpApex = .4f;
 	public float moveSpeed = 6;
-	public float health = 50;
+	public float maxHealth = 50;
+	
 	float accelerationTimeAirborne = .2f;
 	float accelerationTimeGrounded = .1f;
 	
@@ -27,7 +31,7 @@ public class Player : MonoBehaviour {
 
 		gravity = -(2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
 		jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
-		print ("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
+		health = maxHealth;
 		
 	}
 
@@ -58,6 +62,8 @@ public class Player : MonoBehaviour {
       	{
       		Flip();
       	}
+
+      	healthOrb.fillAmount = health / maxHealth;
 	}
 
 	private void Flip()
