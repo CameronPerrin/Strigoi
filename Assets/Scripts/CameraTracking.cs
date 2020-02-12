@@ -21,6 +21,5 @@ public class CameraTracking : MonoBehaviour
     {
         Vector3 playerPos = new Vector3 (player.transform.position.x, player.transform.position.y, -10);
         camera.transform.position = Vector3.SmoothDamp(camera.transform.position, playerPos, ref velocity, smoothTime);
-    	Debug.Log(camera.transform.position);
     }
 }

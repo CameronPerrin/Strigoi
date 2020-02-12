@@ -35,7 +35,9 @@ public class PlayerAttack : MonoBehaviour
                 {
                     // First enemy measured, grabs the script associated with the enemy
                     // and deals damage to them.
-                    enemiesToDamage[i].GetComponent<BasicEnemy>().TakeDamage(damage);
+                    enemiesToDamage[i]
+
+                    .GetComponent<BasicEnemy>().TakeDamage(damage);
                 }
                 // reset cool down
                 cd = CoolDownAmount;
