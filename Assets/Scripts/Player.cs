@@ -1,4 +1,4 @@
-﻿	using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -10,6 +10,8 @@ public class Player : MonoBehaviour {
 	private float health;
 	private float cdPAScript; // Cool down from player Attack script value
 	private float cdMove;
+	private float cdDash;
+	private bool jumpCD;
 
 	public Image healthOrb;
 	public float jumpHeight = 4;
@@ -17,6 +19,8 @@ public class Player : MonoBehaviour {
 	public float moveSpeed = 6;
 	public float maxHealth = 50;
 	public float moveAttackRange = 100;
+	public float dashCoolDown = 6;
+	public float dashStrength = 10000;
 	
 	float accelerationTimeAirborne = .2f;
 	float accelerationTimeGrounded = .1f;
@@ -35,13 +39,13 @@ public class Player : MonoBehaviour {
 		gravity = -(2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
 		jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
 		health = maxHealth;
-
-		
 	}
 
 	void Update() 
 	{
-		
+		// Check if player is grounded to reset cooldown for jump
+		if(controller.collisions.below)
+			jumpCD = true;
 		// Grabbing this information for player CD + movement while attacking
 		// You could place this in Start(), but I put in update in case we change
 		// the attack speed in-game, so now it can update automatically.
@@ -52,11 +56,21 @@ public class Player : MonoBehaviour {
 		if (controller.collisions.above || controller.collisions.below) {
 			velocity.y = 0;
 		}
+		// Jumping
 		Vector2 input = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
 		if (Input.GetKeyDown (KeyCode.Space) && controller.collisions.below)
 		{
-			velocity.y = jumpVelocity;
+			velocity.y = jumpVelocity;	
 		}
+
+		// Double jumping
+		if(Input.GetKeyDown (KeyCode.Space) && jumpCD == true && !controller.collisions.below)
+		{
+			velocity.y = jumpVelocity;
+			jumpCD = false;
+			Debug.Log("Double jump");
+		}
+
 		float targetVelocityX = input.x * moveSpeed;
 		velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, 
 			(controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
@@ -77,19 +91,34 @@ public class Player : MonoBehaviour {
 					(controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
 			}
 			cdMove = cdPAScript;
-			Debug.Log(velocity.x);
 		}
 		else
 		{
 			cdMove -= Time.deltaTime;
 		}
+		// Dash ability
+		if(Input.GetKey(KeyCode.Mouse1) && cdDash <= 0)
+		{
+			if(Input.GetAxisRaw("Horizontal") != 0)
+				velocity.x = 0;
+			if(m_FacingRight)
+			{
+				velocity.x = Mathf.SmoothDamp (0, dashStrength, ref velocityXSmoothing, 
+					(controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
+			}
+			else if(!m_FacingRight)
+			{
+				velocity.x = Mathf.SmoothDamp (0, -dashStrength, ref velocityXSmoothing, 
+					(controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
+				Debug.Log(velocity.x);
+			}
+			cdDash = dashCoolDown;
+		}
+		else
+		{
+			cdDash -= Time.deltaTime;
+		}
 
-		// This an attempted fix to a bug that causes the player to jolt forward an extremely large amount
-		// if the player alt-tabs out then clicks back into the game
-		if(velocity.x > 10 && Input.GetAxisRaw("Horizontal") == 0)
-			velocity.x = 0;
-		if(velocity.x < -10 && Input.GetAxisRaw("Horizontal") == 0)
-			velocity.x = 0;
 		
 		// Flip the player when facing a different direction
 		if (move > 0 && !m_FacingRight)

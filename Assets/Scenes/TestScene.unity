@@ -1181,7 +1181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1037280302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1385,11 +1385,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthOrb: {fileID: 466541025}
-  jumpHeight: 4
-  timeToJumpApex: 0.4
+  jumpHeight: 2
+  timeToJumpApex: 0.3
   moveSpeed: 6
   maxHealth: 50
   moveAttackRange: 50
+  dashCoolDown: 2
+  dashStrength: 1000
 --- !u!114 &1342426943
 MonoBehaviour:
   m_ObjectHideFlags: 0
