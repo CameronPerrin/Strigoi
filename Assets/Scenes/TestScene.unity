@@ -1384,6 +1384,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fee6f2ad40b80a46b8321e4baf2d29d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HolyLightVFX: {fileID: 4105374551415057359, guid: e88eae882ae8a2a4782d6f52ed5b35d4,
+    type: 3}
   healthOrb: {fileID: 466541025}
   jumpHeight: 2
   timeToJumpApex: 0.3

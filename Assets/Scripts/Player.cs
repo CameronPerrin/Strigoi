@@ -14,6 +14,7 @@ public class Player : MonoBehaviour {
 	private float cdHolyLight;
 	private bool jumpCD;
 
+	public GameObject HolyLightVFX;
 	public Image healthOrb;
 	public float jumpHeight = 4;
 	public float timeToJumpApex = .4f;
@@ -140,6 +141,7 @@ public class Player : MonoBehaviour {
       	if(Input.GetKey("e") && cdHolyLight <= 0 && health <= maxHealth)
       	{
       		health += holyLightHealingStrength;
+      		Instantiate(HolyLightVFX, transform.position, Quaternion.identity);
       		cdHolyLight = holyLightCoolDown;
       	}
       	else
