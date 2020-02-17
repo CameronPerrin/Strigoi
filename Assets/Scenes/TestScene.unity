@@ -1389,9 +1389,11 @@ MonoBehaviour:
   timeToJumpApex: 0.3
   moveSpeed: 6
   maxHealth: 50
-  moveAttackRange: 50
+  moveAttackRange: 5
   dashCoolDown: 2
-  dashStrength: 1000
+  dashStrength: 30
+  holyLightHealingStrength: 5
+  holyLightCoolDown: 5
 --- !u!114 &1342426943
 MonoBehaviour:
   m_ObjectHideFlags: 0

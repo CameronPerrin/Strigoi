@@ -11,6 +11,7 @@ public class Player : MonoBehaviour {
 	private float cdPAScript; // Cool down from player Attack script value
 	private float cdMove;
 	private float cdDash;
+	private float cdHolyLight;
 	private bool jumpCD;
 
 	public Image healthOrb;
@@ -18,9 +19,11 @@ public class Player : MonoBehaviour {
 	public float timeToJumpApex = .4f;
 	public float moveSpeed = 6;
 	public float maxHealth = 50;
-	public float moveAttackRange = 100;
+	public float moveAttackRange = 5;
 	public float dashCoolDown = 6;
-	public float dashStrength = 10000;
+	public float dashStrength = 30;
+	public float holyLightHealingStrength = 10;
+	public float holyLightCoolDown = 5;
 	
 	float accelerationTimeAirborne = .2f;
 	float accelerationTimeGrounded = .1f;
@@ -82,13 +85,11 @@ public class Player : MonoBehaviour {
 		{
 			if(m_FacingRight)
 			{
-				velocity.x = Mathf.SmoothDamp (0, moveAttackRange, ref velocityXSmoothing, 
-					(controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
+				velocity.x += moveAttackRange;
 			}
 			else if(!m_FacingRight)
 			{
-				velocity.x = Mathf.SmoothDamp (0, -moveAttackRange, ref velocityXSmoothing, 
-					(controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
+				velocity.x -= moveAttackRange;
 			}
 			cdMove = cdPAScript;
 		}
@@ -103,14 +104,11 @@ public class Player : MonoBehaviour {
 				velocity.x = 0;
 			if(m_FacingRight)
 			{
-				velocity.x = Mathf.SmoothDamp (0, dashStrength, ref velocityXSmoothing, 
-					(controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
+				velocity.x += dashStrength;
 			}
 			else if(!m_FacingRight)
 			{
-				velocity.x = Mathf.SmoothDamp (0, -dashStrength, ref velocityXSmoothing, 
-					(controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
-				Debug.Log(velocity.x);
+				velocity.x -= dashStrength;
 			}
 			cdDash = dashCoolDown;
 		}
@@ -137,6 +135,21 @@ public class Player : MonoBehaviour {
       	{
       		Object.Destroy(this.gameObject);
       	}
+
+      	// Holy Light Ability
+      	if(Input.GetKey("e") && cdHolyLight <= 0 && health <= maxHealth)
+      	{
+      		health += holyLightHealingStrength;
+      		cdHolyLight = holyLightCoolDown;
+      	}
+      	else
+      	{
+      		cdHolyLight -= Time.deltaTime;
+      	}
+      	// Make sure player does not have more than max health
+      	if(health > maxHealth)
+      		health = maxHealth;
+      	
 
 
 	}
