@@ -14,6 +14,7 @@ public class Player : MonoBehaviour {
 	private float cdHolyLight;
 	private bool jumpCD;
 
+	public Animator animator;
 	public GameObject HolyLightVFX;
 	public Image healthOrb;
 	public float jumpHeight = 4;
@@ -47,6 +48,8 @@ public class Player : MonoBehaviour {
 
 	void Update() 
 	{
+		// Movement Animator
+		animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
 		// Check if player is grounded to reset cooldown for jump
 		if(controller.collisions.below)
 			jumpCD = true;

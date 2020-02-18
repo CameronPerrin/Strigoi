@@ -1,0 +1,346 @@
+fileFormatVersion: 2
+guid: 1b4fa0ac792efb549aeefad918be493d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -840416650358268370
+    second: DemiStrigoi-Run-SHEET_0
+  - first:
+      213: -7274351951342628275
+    second: DemiStrigoi-Run-SHEET_1
+  - first:
+      213: 538429716885975829
+    second: DemiStrigoi-Run-SHEET_2
+  - first:
+      213: -4170462238149292181
+    second: DemiStrigoi-Run-SHEET_3
+  - first:
+      213: -3673850769442135938
+    second: DemiStrigoi-Run-SHEET_4
+  - first:
+      213: -5205473707154625493
+    second: DemiStrigoi-Run-SHEET_5
+  - first:
+      213: -7881996365735186959
+    second: DemiStrigoi-Run-SHEET_6
+  - first:
+      213: -5690725502380049713
+    second: DemiStrigoi-Run-SHEET_7
+  - first:
+      213: -5792252904054969519
+    second: DemiStrigoi-Run-SHEET_8
+  - first:
+      213: 1318352563336130308
+    second: DemiStrigoi-Run-SHEET_9
+  - first:
+      213: 4323685874996969740
+    second: DemiStrigoi-Run-SHEET_10
+  - first:
+      213: -623825869762736452
+    second: DemiStrigoi-Run-SHEET_11
+  - first:
+      213: -7913327618871967895
+    second: DemiStrigoi-Run-SHEET_12
+  - first:
+      213: -4721313505010732962
+    second: DemiStrigoi-Run-SHEET_13
+  - first:
+      213: -1575996632704207544
+    second: DemiStrigoi-Run-SHEET_14
+  - first:
+      213: -6340562079700137004
+    second: DemiStrigoi-Run-SHEET_15
+  - first:
+      213: 8719502535920531071
+    second: DemiStrigoi-Run-SHEET_0
+  - first:
+      213: -8921281645105951272
+    second: DemiStrigoi-Run-SHEET_1
+  - first:
+      213: -5844182275359069291
+    second: DemiStrigoi-Run-SHEET_2
+  - first:
+      213: -4208148421944601884
+    second: DemiStrigoi-Run-SHEET_3
+  - first:
+      213: -7469712732433688755
+    second: DemiStrigoi-Run-SHEET_4
+  - first:
+      213: -2672915945058160916
+    second: DemiStrigoi-Run-SHEET_5
+  - first:
+      213: -2348367175315540478
+    second: DemiStrigoi-Run-SHEET_6
+  - first:
+      213: 9176954552323553837
+    second: DemiStrigoi-Run-SHEET_7
+  - first:
+      213: 8055569110593984292
+    second: DemiStrigoi-Run-SHEET_8
+  - first:
+      213: -7544196555311693022
+    second: DemiStrigoi-Run-SHEET_9
+  - first:
+      213: 3892956505124252107
+    second: DemiStrigoi-Run-SHEET_10
+  - first:
+      213: -2738464392494090866
+    second: DemiStrigoi-Run-SHEET_11
+  - first:
+      213: 8580095909865460645
+    second: DemiStrigoi-Run-SHEET_12
+  - first:
+      213: 111931057255626369
+    second: DemiStrigoi-Run-SHEET_13
+  - first:
+      213: -7537414398365309497
+    second: DemiStrigoi-Run-SHEET_14
+  - first:
+      213: -5826973824848127919
+    second: DemiStrigoi-Run-SHEET_15
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 190
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DemiStrigoi-Run-SHEET_0
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 2359
+        width: 467
+        height: 706
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2e521c528d3654f0800000000000000
+      internalID: -840416650358268370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DemiStrigoi-Run-SHEET_1
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 2370
+        width: 573
+        height: 709
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d429d01017f4c0b90800000000000000
+      internalID: -7274351951342628275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DemiStrigoi-Run-SHEET_2
+      rect:
+        serializedVersion: 2
+        x: 2379
+        y: 2342
+        width: 628
+        height: 725
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 513b08b89f2e87700800000000000000
+      internalID: 538429716885975829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DemiStrigoi-Run-SHEET_8
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1259
+        width: 396
+        height: 740
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15b24942ca8cd9fa0800000000000000
+      internalID: -5792252904054969519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DemiStrigoi-Run-SHEET_10
+      rect:
+        serializedVersion: 2
+        x: 1238
+        y: 1308
+        width: 577
+        height: 706
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c01819b3561d00c30800000000000000
+      internalID: 4323685874996969740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DemiStrigoi-Run-SHEET_11
+      rect:
+        serializedVersion: 2
+        x: 2313
+        y: 1300
+        width: 574
+        height: 694
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbec7173da9b757f0800000000000000
+      internalID: -623825869762736452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DemiStrigoi-Run-SHEET_15
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 220
+        width: 415
+        height: 672
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4db492bd16cc108a0800000000000000
+      internalID: -6340562079700137004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
