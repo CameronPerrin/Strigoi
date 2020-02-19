@@ -185,10 +185,10 @@ TextureImporter:
       name: DemiStrigoi-Run-SHEET_0
       rect:
         serializedVersion: 2
-        x: 282
-        y: 2359
-        width: 467
-        height: 706
+        x: 134
+        y: 2321
+        width: 800
+        height: 800
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,10 +206,10 @@ TextureImporter:
       name: DemiStrigoi-Run-SHEET_1
       rect:
         serializedVersion: 2
-        x: 1248
-        y: 2370
-        width: 573
-        height: 709
+        x: 1205
+        y: 2327
+        width: 800
+        height: 800
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,10 +227,10 @@ TextureImporter:
       name: DemiStrigoi-Run-SHEET_2
       rect:
         serializedVersion: 2
-        x: 2379
-        y: 2342
-        width: 628
-        height: 725
+        x: 2279
+        y: 2309
+        width: 800
+        height: 800
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -248,10 +248,10 @@ TextureImporter:
       name: DemiStrigoi-Run-SHEET_8
       rect:
         serializedVersion: 2
-        x: 320
-        y: 1259
-        width: 396
-        height: 740
+        x: 124
+        y: 1240
+        width: 800
+        height: 800
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -269,10 +269,10 @@ TextureImporter:
       name: DemiStrigoi-Run-SHEET_10
       rect:
         serializedVersion: 2
-        x: 1238
-        y: 1308
-        width: 577
-        height: 706
+        x: 1205
+        y: 1265
+        width: 800
+        height: 800
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -290,10 +290,10 @@ TextureImporter:
       name: DemiStrigoi-Run-SHEET_11
       rect:
         serializedVersion: 2
-        x: 2313
-        y: 1300
-        width: 574
-        height: 694
+        x: 2275
+        y: 1248
+        width: 800
+        height: 800
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -311,10 +311,10 @@ TextureImporter:
       name: DemiStrigoi-Run-SHEET_15
       rect:
         serializedVersion: 2
-        x: 332
-        y: 220
-        width: 415
-        height: 672
+        x: 117
+        y: 158
+        width: 800
+        height: 800
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
