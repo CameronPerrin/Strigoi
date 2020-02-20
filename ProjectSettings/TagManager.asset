@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Incline
   - Enemy
+  - Mountains
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Player
   - Obstacle
   - Enemy
-  - 
+  - Mountains
   - 
   - 
   - 
