@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 329594567}
   - component: {fileID: 329594566}
   - component: {fileID: 329594565}
+  - component: {fileID: 329594568}
   m_Layer: 11
   m_Name: MountainsBigger
   m_TagString: Untagged
@@ -306,12 +307,24 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329594564}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.52, y: -0.09, z: 0}
+  m_LocalPosition: {x: -4.52, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &329594568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329594564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49967ab20926b9b4a9dac7fc1aa3dee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &383320956
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +336,7 @@ GameObject:
   - component: {fileID: 383320958}
   - component: {fileID: 383320957}
   - component: {fileID: 383320959}
+  - component: {fileID: 383320960}
   m_Layer: 0
   m_Name: MiddleMountainsBIG
   m_TagString: Untagged
@@ -369,7 +383,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -15
-  m_Sprite: {fileID: 21300000, guid: e772fe525a0984f48b64e90e67e3735e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2477aaa8d8a0d1c40974a7c8fd6bc6b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -388,7 +402,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 383320956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.55, y: -0.19, z: 0}
+  m_LocalPosition: {x: -4.55, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -409,6 +423,18 @@ MonoBehaviour:
   parallaxEffectMultiplier: {x: 0.8, y: 0.6}
   infiniteHorizontal: 1
   infiniteVertical: 0
+--- !u!114 &383320960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383320956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49967ab20926b9b4a9dac7fc1aa3dee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &399547362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,6 +1576,7 @@ GameObject:
   m_Component:
   - component: {fileID: 877784680}
   - component: {fileID: 877784679}
+  - component: {fileID: 877784681}
   m_Layer: 0
   m_Name: TreeBlueish2
   m_TagString: Untagged
@@ -1621,6 +1648,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &877784681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877784678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49967ab20926b9b4a9dac7fc1aa3dee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &981724287
 GameObject:
   m_ObjectHideFlags: 0
@@ -2480,6 +2519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1434503162}
   - component: {fileID: 1434503161}
+  - component: {fileID: 1434503163}
   m_Layer: 0
   m_Name: TreeBlueish1
   m_TagString: Untagged
@@ -2551,6 +2591,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1434503163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434503160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49967ab20926b9b4a9dac7fc1aa3dee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1754676608
 GameObject:
   m_ObjectHideFlags: 0
