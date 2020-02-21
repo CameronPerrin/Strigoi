@@ -1,0 +1,12 @@
+Adobe After Effects v13.5 Windows 64 render log for project “D3ResourceOrb.aep”
+
+Rendering started on 3/11/2018 at 6:42:30 PM
+
+  3/11/2018 6:42:30 PM: Starting composition “HealthOrb”.
+
+  Output To: C:\Users\Josh\Desktop\Psychic dungeoneering images\HealthOrb_sprite\Mana\HealthOrb.avi    3/11/2018 6:42:32 PM: Finished composition “HealthOrb”.
+
+
+  Total Time Elapsed: 2 Seconds
+Log closed on 3/11/2018 at 6:42:32 PM
+
