@@ -9,39 +9,57 @@ public class PlayerAttack : MonoBehaviour
     public LayerMask whatIsEnemies;
     public float CoolDownAmount = 1;
     public float attackRange;
+    public float attackRangeDoubleClick;
     public int damage;
-   
+    public int damageDoubleClick;
+    public bool singleMove;
+    public bool doubleMove;
+
+    private float timeSinceLastClick;
+	private const float DOUBLE_CLICK_TIME = 0.4f;
+	private float lastClickTime;
     private float cd = 0;
+    
 
-
-    // Update is called once per frame
     void Update()
     {
         // Initiate attack based off Cool Down first
         if(cd <= 0)
         {
-            if (Input.GetKey(KeyCode.Mouse0))
+
+        	// first attack
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
+            	singleMove = true; // set to true to enable movement for first attack
+            	timeSinceLastClick = Time.time - lastClickTime;
+            	
                 // Use this to trigger player animation:
                 // playerAnim.SetTrigger("attack");
 
-                // Creates a collider at player attack position (which is created outside the
-                // the script as a gameObject). Range is the radius of the circle. What is Enemies
-                // detects a certain type of object as an enemy.
+            	// First wave of attack
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
-                // Loop for each enemy detected, this could be modified to fit only a certain amount
-                // at a time. Ex 4 enemies when it detected 5.
                 for(int i = 0; i < enemiesToDamage.Length; i++)
                 {
-                    // First enemy measured, grabs the script associated with the enemy
-                    // and deals damage to them.
-                    enemiesToDamage[i]
-
-                    .GetComponent<BasicEnemy>().TakeDamage(damage);
+                   	enemiesToDamage[i].GetComponent<BasicEnemy>().TakeDamage(damage);
                 }
+
                 // reset cool down
                 cd = CoolDownAmount;
-            }         
+				
+				// measure the last time the player clicked
+				lastClickTime = Time.time;
+            } 
+            // second attack
+            if(Input.GetKeyDown(KeyCode.Mouse0) && timeSinceLastClick - CoolDownAmount <= DOUBLE_CLICK_TIME)
+            {	
+            	doubleMove = true;// set to true to enable movement for second attack
+                Collider2D[] enemiesToDamageDA = Physics2D.OverlapCircleAll(attackPos.position, attackRangeDoubleClick, whatIsEnemies);
+                for(int i = 0; i < enemiesToDamageDA.Length; i++)
+                {
+                    enemiesToDamageDA[i].GetComponent<BasicEnemy>().TakeDamage(damageDoubleClick);
+                }
+            }
+
         }
         else
         {

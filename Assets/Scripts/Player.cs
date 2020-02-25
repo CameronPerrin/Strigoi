@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour {
 
 	private bool m_FacingRight = true;
+	private bool jumpCD;
 	private float move;
 	private float health;
 	private float cdPAScript; // Cool down from player Attack script value
 	private float cdMove;
 	private float cdDash;
 	private float cdHolyLight;
-	private bool jumpCD;
+	private float attackCounter = 0;
 
 	public Animator animator;
 	public GameObject HolyLightVFX;
@@ -48,6 +49,7 @@ public class Player : MonoBehaviour {
 
 	void Update() 
 	{
+
 		// Movement Animator
 		animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
 		// Check if player is grounded to reset cooldown for jump
@@ -65,7 +67,7 @@ public class Player : MonoBehaviour {
 		}
 		// Jumping
 		Vector2 input = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
-		if (Input.GetKeyDown (KeyCode.Space) && controller.collisions.below)
+		if (Input.GetKeyDown(KeyCode.Space) && controller.collisions.below)
 		{
 			velocity.y = jumpVelocity;	
 		}
@@ -84,25 +86,22 @@ public class Player : MonoBehaviour {
 		velocity.y += gravity * Time.deltaTime;
 		controller.Move (velocity * Time.deltaTime);
 
-		// Move the player when he attacks and no input from movement
-		if(Input.GetKey(KeyCode.Mouse0) && cdMove <= 0 && Input.GetAxisRaw("Horizontal") == 0)
+	
+		
+		// Move the player when attacking + double attack combo
+		if(GetComponent<PlayerAttack>().doubleMove == true)
 		{
-			if(m_FacingRight)
-			{
-				velocity.x += moveAttackRange;
-			}
-			else if(!m_FacingRight)
-			{
-				velocity.x -= moveAttackRange;
-			}
-			cdMove = cdPAScript;
+			velocity.x -= moveAttackRange;
+			GetComponent<PlayerAttack>().doubleMove = false;
 		}
-		else
+		else if(GetComponent<PlayerAttack>().singleMove == true)
 		{
-			cdMove -= Time.deltaTime;
+			velocity.x += moveAttackRange;
+			GetComponent<PlayerAttack>().singleMove = false;
 		}
+
 		// Dash ability
-		if(Input.GetKey(KeyCode.Mouse1) && cdDash <= 0)
+		if(Input.GetKeyDown(KeyCode.Mouse1) && cdDash <= 0)
 		{
 			if(Input.GetAxisRaw("Horizontal") != 0)
 				velocity.x = 0;
