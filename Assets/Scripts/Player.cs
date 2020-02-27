@@ -17,6 +17,7 @@ public class Player : MonoBehaviour {
 	private float attackCounter = 0;
 	private float invinTime;
 	private float tempHealth;
+	private float bfTimer;
 
 	public Animator animator;
 	public GameObject HolyLightVFX;
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour {
 	public float holyLightHealingStrength = 10;
 	public float holyLightCoolDown = 5;
 	public float invincibilityTimer = 2;
+	public float abilityBufferTimer = 0.1f; // this should always be lower than any ability CD.
 
 	float accelerationTimeAirborne = .2f;
 	float accelerationTimeGrounded = .1f;
@@ -90,8 +92,10 @@ public class Player : MonoBehaviour {
 		velocity.y += gravity * Time.deltaTime;
 		controller.Move (velocity * Time.deltaTime);
 
-	
-		
+		// Buffer Timer lower cd
+		if(bfTimer > 0)
+			bfTimer -= Time.deltaTime;	
+		Debug.Log(bfTimer);	
 		// Move the player when attacking + double attack combo
 		if(GetComponent<PlayerAttack>().doubleMove == true)
 		{
@@ -105,8 +109,9 @@ public class Player : MonoBehaviour {
 		}
 
 		// Dash ability
-		if(Input.GetKeyDown(KeyCode.Mouse1) && cdDash <= 0)
+		if(Input.GetKeyDown(KeyCode.Mouse1) && cdDash <= 0 && bfTimer <= 0)
 		{
+			bfTimer = abilityBufferTimer;
 			isDashing = true;
 			if(Input.GetAxisRaw("Horizontal") != 0)
 				velocity.x = 0;
@@ -125,9 +130,11 @@ public class Player : MonoBehaviour {
 			isDashing = false;
 			cdDash -= Time.deltaTime;
 		}
-	
-		if(isDashing == true)
-		{
+
+		// "I" frames from dashing
+		if(isDashing == true && bfTimer <= 0)
+		{ 	
+			bfTimer = abilityBufferTimer; // Enabling buffer timer to prevent mult. abil. usage
 			invinTime = invincibilityTimer;
 			tempHealth = health;
 		}
@@ -159,9 +166,10 @@ public class Player : MonoBehaviour {
       	}
 
       	// Holy Light Ability
-      	if(Input.GetKey("e") && cdHolyLight <= 0 && health <= maxHealth)
+      	if(Input.GetKey("e") && cdHolyLight <= 0 && bfTimer <= 0)
       	{
-      		health += holyLightHealingStrength;
+      		bfTimer = abilityBufferTimer;
+		health += holyLightHealingStrength;
       		Instantiate(HolyLightVFX, transform.position, Quaternion.identity);
       		cdHolyLight = holyLightCoolDown;
       	}

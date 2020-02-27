@@ -657,8 +657,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 75, y: 75}
-  m_SizeDelta: {x: 140.22, y: 140.22}
+  m_AnchoredPosition: {x: 135.24, y: 121.93}
+  m_SizeDelta: {x: 223.42, y: 223.42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &466541025
 MonoBehaviour:
@@ -1422,12 +1422,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1332610780}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 75.32, y: 75.325}
-  m_SizeDelta: {x: 132.73, y: 132.73}
+  m_AnchoredPosition: {x: 137.5, y: 118.899994}
+  m_SizeDelta: {x: 218.9, y: 218.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &831617149
 MonoBehaviour:
@@ -1925,8 +1925,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 466541024}
-  - {fileID: 1814334728}
   - {fileID: 831617148}
+  - {fileID: 1814334728}
   m_Father: {fileID: 761504820}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2613,7 +2613,7 @@ GameObject:
   - component: {fileID: 1814334730}
   - component: {fileID: 1814334729}
   m_Layer: 5
-  m_Name: background
+  m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2626,17 +2626,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814334727}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1332610780}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 75, y: 75}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 370.9, y: 91.935}
+  m_SizeDelta: {x: 918.47, y: 314.97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1814334729
 MonoBehaviour:
@@ -2651,12 +2651,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 1}
+  m_Color: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 91e22c916a9ff8149a16ee4b4637d167, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f5ef0e746a797e44caabfae25ab10180, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7762,6 +7762,16 @@ PrefabInstance:
       propertyPath: healthOrb
       value: 
       objectReference: {fileID: 466541025}
+    - target: {fileID: 8629168398178631837, guid: 09aaa6840f4e52847b1d696be816d144,
+        type: 3}
+      propertyPath: dashCoolDown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629168398178631837, guid: 09aaa6840f4e52847b1d696be816d144,
+        type: 3}
+      propertyPath: invincibilityTimer
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8629168398178631838, guid: 09aaa6840f4e52847b1d696be816d144,
         type: 3}
       propertyPath: m_Name
