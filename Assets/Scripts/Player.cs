@@ -5,6 +5,7 @@ using UnityEngine.UI;
 [RequireComponent (typeof (Controller2D))]
 public class Player : MonoBehaviour {
 
+	private bool isDashing = false;
 	private bool m_FacingRight = true;
 	private bool jumpCD;
 	private float move;
@@ -14,6 +15,8 @@ public class Player : MonoBehaviour {
 	private float cdDash;
 	private float cdHolyLight;
 	private float attackCounter = 0;
+	private float invinTime;
+	private float tempHealth;
 
 	public Animator animator;
 	public GameObject HolyLightVFX;
@@ -27,7 +30,8 @@ public class Player : MonoBehaviour {
 	public float dashStrength = 30;
 	public float holyLightHealingStrength = 10;
 	public float holyLightCoolDown = 5;
-	
+	public float invincibilityTimer = 2;
+
 	float accelerationTimeAirborne = .2f;
 	float accelerationTimeGrounded = .1f;
 	
@@ -82,7 +86,7 @@ public class Player : MonoBehaviour {
 
 		float targetVelocityX = input.x * moveSpeed;
 		velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, 
-			(controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
+		(controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
 		velocity.y += gravity * Time.deltaTime;
 		controller.Move (velocity * Time.deltaTime);
 
@@ -103,6 +107,7 @@ public class Player : MonoBehaviour {
 		// Dash ability
 		if(Input.GetKeyDown(KeyCode.Mouse1) && cdDash <= 0)
 		{
+			isDashing = true;
 			if(Input.GetAxisRaw("Horizontal") != 0)
 				velocity.x = 0;
 			if(m_FacingRight)
@@ -117,10 +122,24 @@ public class Player : MonoBehaviour {
 		}
 		else
 		{
+			isDashing = false;
 			cdDash -= Time.deltaTime;
 		}
+	
+		if(isDashing == true)
+		{
+			invinTime = invincibilityTimer;
+			tempHealth = health;
+		}
+		else
+		{
+			invinTime -= Time.deltaTime;
+		}
+		if(invinTime > 0)
+		{
+			health = tempHealth;
+		}
 
-		
 		// Flip the player when facing a different direction
 		if (move > 0 && !m_FacingRight)
       	{
