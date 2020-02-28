@@ -22,6 +22,8 @@ public class Player : MonoBehaviour {
 	public Animator animator;
 	public GameObject HolyLightVFX;
 	public Image healthOrb;
+	public Image button1;
+	public Image button2;
 	public float jumpHeight = 4;
 	public float timeToJumpApex = .4f;
 	public float moveSpeed = 6;
@@ -47,7 +49,6 @@ public class Player : MonoBehaviour {
 
 	void Start() {
 		controller = GetComponent<Controller2D> ();
-
 		gravity = -(2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
 		jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
 		health = maxHealth;
@@ -146,7 +147,6 @@ public class Player : MonoBehaviour {
 		{
 			health = tempHealth;
 		}
-
 		// Flip the player when facing a different direction
 		if (move > 0 && !m_FacingRight)
       	{
