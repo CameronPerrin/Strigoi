@@ -22,8 +22,8 @@ public class Player : MonoBehaviour {
 	public Animator animator;
 	public GameObject HolyLightVFX;
 	public Image healthOrb;
-	public Image button1;
-	public Image button2;
+	public Image button1Image;
+	public Image button2Image;
 	public float jumpHeight = 4;
 	public float timeToJumpApex = .4f;
 	public float moveSpeed = 6;
@@ -96,7 +96,6 @@ public class Player : MonoBehaviour {
 		// Buffer Timer lower cd
 		if(bfTimer > 0)
 			bfTimer -= Time.deltaTime;	
-		Debug.Log(bfTimer);	
 		// Move the player when attacking + double attack combo
 		if(GetComponent<PlayerAttack>().doubleMove == true)
 		{
@@ -108,10 +107,12 @@ public class Player : MonoBehaviour {
 			velocity.x += moveAttackRange;
 			GetComponent<PlayerAttack>().singleMove = false;
 		}
-
+		//set fill amount for Dash
+		button2Image.fillAmount = cdDash / dashCoolDown;
 		// Dash ability
 		if(Input.GetKeyDown(KeyCode.Mouse1) && cdDash <= 0 && bfTimer <= 0)
 		{
+			button2Image.fillAmount = 1;
 			bfTimer = abilityBufferTimer;
 			isDashing = true;
 			if(Input.GetAxisRaw("Horizontal") != 0)
@@ -164,7 +165,9 @@ public class Player : MonoBehaviour {
       	{
       		Object.Destroy(this.gameObject);
       	}
-
+	
+	// Change cd based off of cool down
+	button1Image.fillAmount = cdHolyLight / holyLightCoolDown;
       	// Holy Light Ability
       	if(Input.GetKey("e") && cdHolyLight <= 0 && bfTimer <= 0)
       	{
@@ -172,6 +175,7 @@ public class Player : MonoBehaviour {
 		health += holyLightHealingStrength;
       		Instantiate(HolyLightVFX, transform.position, Quaternion.identity);
       		cdHolyLight = holyLightCoolDown;
+		button1Image.fillAmount = 1;	
       	}
       	else
       	{
