@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour {
 
 	private bool isDashing = false;
-	private bool m_FacingRight = true;
+	public bool m_FacingRight = true;
 	private bool jumpCD;
 	private float move;
 	private float health;
@@ -19,7 +19,10 @@ public class Player : MonoBehaviour {
 	private float tempHealth;
 	private float bfTimer;
 
+	public Transform launchPos;	
 	public Animator animator;
+	public GameObject launchPuff;
+	public GameObject footDust;
 	public GameObject HolyLightVFX;
 	public Image healthOrb;
 	public Image button1Image;
@@ -76,7 +79,7 @@ public class Player : MonoBehaviour {
 		Vector2 input = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
 		if (Input.GetKeyDown(KeyCode.Space) && controller.collisions.below)
 		{
-			velocity.y = jumpVelocity;	
+			velocity.y = jumpVelocity;
 		}
 
 		// Double jumping
@@ -86,7 +89,10 @@ public class Player : MonoBehaviour {
 			jumpCD = false;
 			Debug.Log("Double jump");
 		}
-
+		if(!controller.collisions.below)
+			footDust.SetActive(false);
+		else
+			footDust.SetActive(true);
 		float targetVelocityX = input.x * moveSpeed;
 		velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, 
 		(controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
@@ -112,6 +118,7 @@ public class Player : MonoBehaviour {
 		// Dash ability
 		if(Input.GetKeyDown(KeyCode.Mouse1) && cdDash <= 0 && bfTimer <= 0)
 		{
+			Instantiate(launchPuff, launchPos.position, Quaternion.identity);
 			button2Image.fillAmount = 1;
 			bfTimer = abilityBufferTimer;
 			isDashing = true;
@@ -126,6 +133,7 @@ public class Player : MonoBehaviour {
 				velocity.x -= dashStrength;
 			}
 			cdDash = dashCoolDown;
+
 		}
 		else
 		{

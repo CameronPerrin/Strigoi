@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class DestroyParticle : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+	public float destroyTimer = 1;
+ 
     // Update is called once per frame
     void Update()
     {
-        Object.Destroy(this.gameObject, 1);
+        Object.Destroy(this.gameObject, destroyTimer);
     }
 }
