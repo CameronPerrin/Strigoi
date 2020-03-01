@@ -5,7 +5,7 @@ using System.Collections;
 public class BasicEnemy : MonoBehaviour 
 {
 	public int health;
-
+	public Animator zombAnimator;
 	[SerializeField]
 	GameObject player;
 	[SerializeField]
@@ -41,6 +41,8 @@ public class BasicEnemy : MonoBehaviour
 	{
 		gravity = -(2 * 4) / Mathf.Pow (timeToJumpApex, 2);
 		controller = GetComponent<Controller2D>();
+
+		
 	}
 
 	void Update()
@@ -55,11 +57,17 @@ public class BasicEnemy : MonoBehaviour
 		{
 			// chase the player
 			ChasePlayer();
+			//start walk animation
+			zombAnimator.SetBool("isWalking", true);
+			
 		}	
 		else
 		{
 			// stop chasing player
 			StopChasingPlayer();
+			//end walk anim
+			zombAnimator.SetBool("isWalking", false);
+
 		}
 		// check for HP
 		if(health <= 0)
