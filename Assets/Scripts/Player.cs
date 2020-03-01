@@ -18,9 +18,11 @@ public class Player : MonoBehaviour {
 	private float invinTime;
 	private float tempHealth;
 	private float bfTimer;
+	private float dashTrailCD;
 
 	public Transform launchPos;	
 	public Animator animator;
+	public GameObject dashTrail;
 	public GameObject launchPuff;
 	public GameObject footDust;
 	public GameObject HolyLightVFX;
@@ -103,25 +105,41 @@ public class Player : MonoBehaviour {
 		if(bfTimer > 0)
 			bfTimer -= Time.deltaTime;	
 		// Move the player when attacking + double attack combo
-		if(GetComponent<PlayerAttack>().doubleMove == true)
+		if(GetComponent<PlayerAttack>().singleMove == true && m_FacingRight)
+		{
+			velocity.x += moveAttackRange;
+			GetComponent<PlayerAttack>().singleMove = false;
+		}
+		else if(GetComponent<PlayerAttack>().singleMove == true && !m_FacingRight)
+		{
+			velocity.x -= moveAttackRange;
+			GetComponent<PlayerAttack>().singleMove = false;
+		}
+		else if(GetComponent<PlayerAttack>().doubleMove == true && m_FacingRight)
 		{
 			velocity.x -= moveAttackRange;
 			GetComponent<PlayerAttack>().doubleMove = false;
 		}
-		else if(GetComponent<PlayerAttack>().singleMove == true)
+		else if(GetComponent<PlayerAttack>().doubleMove == true && !m_FacingRight)
 		{
-			velocity.x += moveAttackRange;
-			GetComponent<PlayerAttack>().singleMove = false;
+			velocity.x -= moveAttackRange;
+			GetComponent<PlayerAttack>().doubleMove = false;
 		}
 		//set fill amount for Dash
 		button2Image.fillAmount = cdDash / dashCoolDown;
 		// Dash ability
 		if(Input.GetKeyDown(KeyCode.Mouse1) && cdDash <= 0 && bfTimer <= 0)
 		{
+			isDashing = true;
+			bfTimer = abilityBufferTimer;
+			invinTime = invincibilityTimer;
+
+
+			dashTrail.SetActive(true);
+			dashTrailCD = 0.75f;
 			Instantiate(launchPuff, launchPos.position, Quaternion.identity);
 			button2Image.fillAmount = 1;
-			bfTimer = abilityBufferTimer;
-			isDashing = true;
+			
 			if(Input.GetAxisRaw("Horizontal") != 0)
 				velocity.x = 0;
 			if(m_FacingRight)
@@ -139,13 +157,16 @@ public class Player : MonoBehaviour {
 		{
 			isDashing = false;
 			cdDash -= Time.deltaTime;
+			dashTrailCD -= Time.deltaTime;
 		}
+		// De-active the dash trail
+		if(dashTrailCD <= 0)
+			dashTrail.SetActive(false);
+
 
 		// "I" frames from dashing
-		if(isDashing == true && bfTimer <= 0)
+		if(isDashing)
 		{ 	
-			bfTimer = abilityBufferTimer; // Enabling buffer timer to prevent mult. abil. usage
-			invinTime = invincibilityTimer;
 			tempHealth = health;
 		}
 		else
@@ -156,6 +177,8 @@ public class Player : MonoBehaviour {
 		{
 			health = tempHealth;
 		}
+
+
 		// Flip the player when facing a different direction
 		if (move > 0 && !m_FacingRight)
       	{
@@ -174,8 +197,8 @@ public class Player : MonoBehaviour {
       		Object.Destroy(this.gameObject);
       	}
 	
-	// Change cd based off of cool down
-	button1Image.fillAmount = cdHolyLight / holyLightCoolDown;
+		// Change cd based off of cool down
+		button1Image.fillAmount = cdHolyLight / holyLightCoolDown;
       	// Holy Light Ability
       	if(Input.GetKey("e") && cdHolyLight <= 0 && bfTimer <= 0)
       	{

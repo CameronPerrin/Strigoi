@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlipParticle : MonoBehaviour
+public class FlipParticle_Instantiation : MonoBehaviour
 {
-	public GameObject player;
+	public float xScale = 1;
+
+	private GameObject player;
     private bool facingRight;
 
     void Start()
@@ -19,10 +21,10 @@ public class FlipParticle : MonoBehaviour
     	Vector3 theScale = transform.localScale;
     	if(facingRight)
     	{
-    		theScale.x = 1;
+    		theScale.x = xScale;
     	}
     	else
-    		theScale.x = -1;
+    		theScale.x = -xScale;
 
     	transform.localScale = theScale; 
     }
