@@ -1,16 +1,22 @@
 fileFormatVersion: 2
-guid: 0ee34866c2e136f41bf560a29006a52f
+guid: 0323c52af82e5b84e95b88c657762a1a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8099734324071514357
-    second: enemy-walk-early_0
+      213: 1322225683754784943
+    second: atk start_0
   - first:
-      213: -2115698678670641712
-    second: enemy-walk-early_1
+      213: 6261098750090447843
+    second: atk start_1
   - first:
-      213: -839053842414438538
-    second: enemy-walk-early_2
+      213: 2849218828889657839
+    second: atk start_2
+  - first:
+      213: 925369386371770388
+    second: atk start_3
+  - first:
+      213: -8590110478430713745
+    second: atk start_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -54,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 160
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -95,64 +101,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: enemy-walk-early_0
+      name: atk start_0
       rect:
         serializedVersion: 2
-        x: 215
-        y: 1140
-        width: 464
-        height: 845
+        x: 223
+        y: 3079
+        width: 488
+        height: 646
       alignment: 9
-      pivot: {x: 0.8752652, y: 0.040302996}
+      pivot: {x: 0.51254714, y: 0.52212006}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0fbda6eb86f79f80800000000000000
-      internalID: -8099734324071514357
+      spriteID: fa81a11014d795210800000000000000
+      internalID: 1322225683754784943
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy-walk-early_1
+      name: atk start_1
       rect:
         serializedVersion: 2
-        x: 1283
-        y: 1131
-        width: 486
-        height: 878
+        x: 1610
+        y: 3081
+        width: 503
+        height: 608
       alignment: 9
-      pivot: {x: 0.6437556, y: 0.043195095}
+      pivot: {x: 0.4656242, y: 0.4878034}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d5b21ed24783a2e0800000000000000
-      internalID: -2115698678670641712
+      spriteID: 3eb88c6f324e3e650800000000000000
+      internalID: 6261098750090447843
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: enemy-walk-early_2
+      name: atk start_2
       rect:
         serializedVersion: 2
-        x: 39
-        y: 163
-        width: 647
-        height: 745
+        x: 2929
+        y: 3045
+        width: 666
+        height: 707
       alignment: 9
-      pivot: {x: 0.9071053, y: 0.043594666}
+      pivot: {x: 0.5175741, y: 0.39091057}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 677f57fc9f41b54f0800000000000000
-      internalID: -839053842414438538
+      spriteID: fe19257dd657a8720800000000000000
+      internalID: 2849218828889657839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atk start_4
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 1975
+        width: 528
+        height: 502
+      alignment: 9
+      pivot: {x: 0.6213268, y: 0.53300905}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f68c6cf380cc9c880800000000000000
+      internalID: -8590110478430713745
       vertices: []
       indices: 
       edges: []
