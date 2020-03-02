@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent (typeof (Controller2D))]
 public class Player : MonoBehaviour {
@@ -197,7 +198,8 @@ public class Player : MonoBehaviour {
       	// Death
       	if(health <= 0)
       	{
-      		Object.Destroy(this.gameObject);
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+			Object.Destroy(this.gameObject);
       	}
 	
 		// Change cd based off of cool down
