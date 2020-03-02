@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttackRevamp : MonoBehaviour
+public class PlayerAttackAnimation : MonoBehaviour
 {
 
     float clicked = 0;
     float clicktime = 0;
     float clickdelay = 0.4f;
     float doubleDelay;
+    bool canDo = true;
     public Animator playerAnimator;
     //private bool waiting = false;
     // Start is called before the first frame update
@@ -64,12 +65,24 @@ public class PlayerAttackRevamp : MonoBehaviour
         //stop all movement and flipping
         //COMMIT THE PLAYER TO HIS ATTACK
         //FUCK UP OR NOT
-        if(playerAnimator.GetBool("isAttackDouble") || playerAnimator.GetBool("isAttackLonely") || playerAnimator.GetBool("isAttack")){
+        if(playerAnimator.GetBool("isAttackDouble") || playerAnimator.GetBool("isAttackLonely") || playerAnimator.GetBool("isAttack"))
+        {
             GetComponent<Player>().moveSpeed = 0;
+            //velocity.x += moveAttackRange;
+            if(canDo){
+                if(GetComponent<Player>().m_FacingRight)
+                    GetComponent<Player>().velocity.x += GetComponent<Player>().moveAttackRange;
+                if(!GetComponent<Player>().m_FacingRight)
+                    GetComponent<Player>().velocity.x -= GetComponent<Player>().moveAttackRange;
+                
+                canDo = false;
+            }
+            
             GetComponent<Player>().canFlip = false;
         }
         else
         {
+            canDo = true;
             GetComponent<Player>().moveSpeed = 7;
             GetComponent<Player>().canFlip = true;
         }
