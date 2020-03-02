@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 [RequireComponent (typeof (Controller2D))]
 public class BasicEnemy : MonoBehaviour 
 {
 	public int health;
 	public Animator zombAnimator;
+	public SpriteRenderer enemyImage;
 	[SerializeField]
 	GameObject player;
 	[SerializeField]
@@ -23,6 +25,9 @@ public class BasicEnemy : MonoBehaviour
 	[SerializeField]
 	float attackTimer;
 	
+	
+
+	
 	Vector3 velocity;
 	Vector3 scale;
 
@@ -32,7 +37,7 @@ public class BasicEnemy : MonoBehaviour
 	float accelerationTimeGrounded = .1f;
 	float timeToJumpApex = .4f;
 	float cd;
-
+	float changeColor = 0;
 	bool isFacingRight = true;
 	
 	Controller2D controller;
@@ -41,14 +46,18 @@ public class BasicEnemy : MonoBehaviour
 	{
 		gravity = -(2 * 4) / Mathf.Pow (timeToJumpApex, 2);
 		controller = GetComponent<Controller2D>();
-
+		enemyImage = GetComponent<SpriteRenderer>();
 		
 	}
 
 	void Update()
 	{
-		scale = transform.localScale;
+		if(changeColor <= 0)
+			enemyImage.color = new Color (255,255,255,255);
+		else
+			changeColor -= Time.deltaTime;
 
+		scale = transform.localScale;	
 		// Directional movement -- BEGINNING
 		float distToPlayer = Vector2.Distance(agroView.transform.position, player.transform.position);
 		velocity.y += gravity * Time.deltaTime;
@@ -145,6 +154,8 @@ public class BasicEnemy : MonoBehaviour
 	public void TakeDamage(int damage)
 	{
 		health -= damage;
+		enemyImage.color = new Color (255,0,0,255);
+		changeColor = 0.2f;
 		// Use to spawn blood on hit: 
 		// Instantiate(bloodVFX, transform.position, Quaternion,identity);
 	}

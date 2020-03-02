@@ -2356,6 +2356,11 @@ PrefabInstance:
       propertyPath: attackTimer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8537848851833162938, guid: 7c2ac90520fdca4448c36ad0ba2ac15f,
+        type: 3}
+      propertyPath: enemyImage
+      value: 
+      objectReference: {fileID: 1374748132}
     - target: {fileID: 8537848851833162939, guid: 7c2ac90520fdca4448c36ad0ba2ac15f,
         type: 3}
       propertyPath: m_Name
@@ -2492,6 +2497,21 @@ PrefabInstance:
       propertyPath: m_FlipY
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8537848851833162943, guid: 7c2ac90520fdca4448c36ad0ba2ac15f,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537848851833162943, guid: 7c2ac90520fdca4448c36ad0ba2ac15f,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537848851833162943, guid: 7c2ac90520fdca4448c36ad0ba2ac15f,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8537848853407085699, guid: 7c2ac90520fdca4448c36ad0ba2ac15f,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -2610,6 +2630,12 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!212 &1374748132 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8537848851833162943, guid: 7c2ac90520fdca4448c36ad0ba2ac15f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1267373485}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1379121061 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8629168398178631838, guid: 09aaa6840f4e52847b1d696be816d144,
