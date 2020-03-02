@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8629168398178631905}
   - component: {fileID: 8629168398178631837}
   - component: {fileID: 8629168398178631904}
+  - component: {fileID: -144273665402326180}
   - component: {fileID: 8629168398178631836}
   - component: {fileID: 8629168398178631911}
   - component: {fileID: 8629168398178631910}
@@ -108,7 +109,7 @@ BoxCollider2D:
   m_Offset: {x: -0.21, y: -0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.45298707, y: 0.50458664}
     oldSize: {x: 5, y: 5}
     newSize: {x: 0.5, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -133,6 +134,7 @@ MonoBehaviour:
   m_FacingRight: 1
   launchPos: {fileID: 0}
   animator: {fileID: 8629168398178631909}
+  dashTrail: {fileID: 0}
   launchPuff: {fileID: 0}
   footDust: {fileID: 0}
   HolyLightVFX: {fileID: 1449964233390170058, guid: 31b1426c9d73e4a4e9d82a0dcd4912f7,
@@ -158,7 +160,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8629168398178631838}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c032ed65f6cc48e44bf6eddb0be98232, type: 3}
   m_Name: 
@@ -174,6 +176,19 @@ MonoBehaviour:
   damageDoubleClick: 0
   singleMove: 0
   doubleMove: 0
+  playerAnimator: {fileID: 0}
+--- !u!114 &-144273665402326180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8629168398178631838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8d6b75f040cc040a6a949de00aaef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8629168398178631836
 MonoBehaviour:
   m_ObjectHideFlags: 0

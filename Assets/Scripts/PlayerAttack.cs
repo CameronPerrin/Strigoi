@@ -18,33 +18,25 @@ public class PlayerAttack : MonoBehaviour
 
     private float timeSinceLastClick;
 	private const float DOUBLE_CLICK_TIME = 0.4f;
-	private float lastClickTime;
+	private float clickTime = 0;
     private float cd = 0;
-
-    //[HideInInspector]
-    //private bool hasDoubleAttacked = false;
 
     void Update()
     {
         // Initiate attack based off Cool Down first
-        if(cd <= 0)
+        if (cd <= 0)
         {
 
         	// first attack
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                
+
                 //start attack anim
                 playerAnimator.SetBool("isAttack", true);
 
                 singleMove = true; // set to true to enable movement for first attack
-                //lastClickTime = Time.time;
-                timeSinceLastClick = Time.time - lastClickTime;
-            	
-                // Use this to trigger player animation:
-                // playerAnim.SetTrigger("attack");
 
-            	// First wave of attack
+                // First wave of attack
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
                 for(int i = 0; i < enemiesToDamage.Length; i++)
                 {
@@ -54,9 +46,7 @@ public class PlayerAttack : MonoBehaviour
                 // reset cool down
                 cd = CoolDownAmount;
 
-                // measure the last time the player clicked
-                lastClickTime = Time.time;
-                if (Input.GetKeyDown(KeyCode.Mouse0) && ((timeSinceLastClick - CoolDownAmount) < DOUBLE_CLICK_TIME))
+                if (Input.GetKeyDown(KeyCode.Mouse0)) //double click succeed
                 {
                     //hasDoubleAttacked = true;
                     Debug.Log("Double");
@@ -69,7 +59,7 @@ public class PlayerAttack : MonoBehaviour
                         enemiesToDamageDA[i].GetComponent<BasicEnemy>().TakeDamage(damageDoubleClick);
                     }
                 }
-                if(((timeSinceLastClick - CoolDownAmount) > DOUBLE_CLICK_TIME))
+                if(true)//fail double click
                 {
                     playerAnimator.SetBool("isAttackLonely", true);
                 }
@@ -79,7 +69,7 @@ public class PlayerAttack : MonoBehaviour
                 playerAnimator.SetBool("isAttack", false);
                 playerAnimator.SetBool("isAttackDouble", false);
                 playerAnimator.SetBool("isAttackLonely", false);
-                //hasDoubleAttacked = false;
+  
             }
 
         }
