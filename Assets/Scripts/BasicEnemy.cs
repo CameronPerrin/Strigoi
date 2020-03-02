@@ -69,6 +69,15 @@ public class BasicEnemy : MonoBehaviour
 			zombAnimator.SetBool("isWalking", false);
 
 		}
+		float enemyDistToPlayer = Vector2.Distance(transform.position, player.transform.position);
+		if(enemyDistToPlayer < 2)
+		{
+			StopChasingPlayer();
+			zombAnimator.SetBool("isWalking", false);
+		}
+		
+
+
 		// check for HP
 		if(health <= 0)
 		{

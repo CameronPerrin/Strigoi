@@ -2346,6 +2346,16 @@ PrefabInstance:
       propertyPath: agroRange
       value: 6.9
       objectReference: {fileID: 0}
+    - target: {fileID: 8537848851833162938, guid: 7c2ac90520fdca4448c36ad0ba2ac15f,
+        type: 3}
+      propertyPath: attackRange
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537848851833162938, guid: 7c2ac90520fdca4448c36ad0ba2ac15f,
+        type: 3}
+      propertyPath: attackTimer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8537848851833162939, guid: 7c2ac90520fdca4448c36ad0ba2ac15f,
         type: 3}
       propertyPath: m_Name
