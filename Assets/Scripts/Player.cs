@@ -41,6 +41,9 @@ public class Player : MonoBehaviour {
 	public float invincibilityTimer = 2;
 	public float abilityBufferTimer = 0.1f; // this should always be lower than any ability CD.
 
+	[HideInInspector]
+	public bool canFlip = true;
+
 	float accelerationTimeAirborne = .2f;
 	float accelerationTimeGrounded = .1f;
 	
@@ -222,14 +225,16 @@ public class Player : MonoBehaviour {
 
 	private void Flip()
  	{
-    	// Switch the way the player is labelled as facing.
-    	m_FacingRight = !m_FacingRight;
+        if (canFlip) { 
+    		// Switch the way the player is labelled as facing.
+    		m_FacingRight = !m_FacingRight;
 
-    	// Multiply the player's x local scale by -1.
-    	Vector3 theScale = transform.localScale;
-    	theScale.x *= -1;
-    	transform.localScale = theScale;
-  	}
+    		// Multiply the player's x local scale by -1.
+    		Vector3 theScale = transform.localScale;
+    		theScale.x *= -1;
+    		transform.localScale = theScale;
+		}
+	}
 
   	// Take damage
   	public void TakeDamage(int damage)

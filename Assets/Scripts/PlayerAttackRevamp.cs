@@ -55,11 +55,25 @@ public class PlayerAttackRevamp : MonoBehaviour
             playerAnimator.SetBool("isAttackLonely", false);
         }
 
-        if (playerAnimator.GetBool("isAttackDouble") && (Time.time - doubleDelay > 0.3f))
+        if (playerAnimator.GetBool("isAttackDouble") && (Time.time - doubleDelay > 0.7f))
         {
             playerAnimator.SetBool("isAttackDouble", false);
             doubleDelay = 0;
         }
+
+        //stop all movement and flipping
+        //COMMIT THE PLAYER TO HIS ATTACK
+        //FUCK UP OR NOT
+        if(playerAnimator.GetBool("isAttackDouble") || playerAnimator.GetBool("isAttackLonely") || playerAnimator.GetBool("isAttack")){
+            GetComponent<Player>().moveSpeed = 0;
+            GetComponent<Player>().canFlip = false;
+        }
+        else
+        {
+            GetComponent<Player>().moveSpeed = 7;
+            GetComponent<Player>().canFlip = true;
+        }
+
 
     }
 }
