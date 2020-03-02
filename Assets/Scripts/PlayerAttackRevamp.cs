@@ -55,7 +55,7 @@ public class PlayerAttackRevamp : MonoBehaviour
             playerAnimator.SetBool("isAttackLonely", false);
         }
 
-        if (playerAnimator.GetBool("isAttackDouble") && (Time.time - doubleDelay > 0.7f))
+        if (playerAnimator.GetBool("isAttackDouble") && (Time.time - doubleDelay > 0.6f))
         {
             playerAnimator.SetBool("isAttackDouble", false);
             doubleDelay = 0;
