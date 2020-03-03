@@ -153,6 +153,8 @@ MonoBehaviour:
   holyLightCoolDown: 5
   invincibilityTimer: 2
   abilityBufferTimer: 0.1
+  canFlip: 1
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &8629168398178631904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b8d6b75f040cc040a6a949de00aaef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 0}
 --- !u!114 &8629168398178631836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,6 +322,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8629168398178631906}
     m_Modifications:
+    - target: {fileID: 3317333241701890378, guid: 699849568b33b52429ead820a019e8c4,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 20000
+      objectReference: {fileID: 0}
     - target: {fileID: 4194693928785688341, guid: 699849568b33b52429ead820a019e8c4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -463,7 +471,7 @@ PrefabInstance:
     - target: {fileID: 5263955883214596945, guid: 1594a00eb0418624287e739452e0fb38,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 21
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 7092915258126087190, guid: 1594a00eb0418624287e739452e0fb38,
         type: 3}
