@@ -8,6 +8,7 @@ public class BasicEnemy : MonoBehaviour
 	public int health;
 	public Animator zombAnimator;
 	public SpriteRenderer enemyImage;
+
 	[SerializeField]
 	GameObject player;
 	[SerializeField]
@@ -24,8 +25,6 @@ public class BasicEnemy : MonoBehaviour
 	LayerMask whatIsPlayer;
 	[SerializeField]
 	float attackTimer;
-	
-	
 
 	
 	Vector3 velocity;
@@ -37,7 +36,8 @@ public class BasicEnemy : MonoBehaviour
 	float accelerationTimeGrounded = .1f;
 	float timeToJumpApex = .4f;
 	float cd;
-	float changeColor = 0;
+	Material matWhite;
+	Material matDefault;
 	bool isFacingRight = true;
 	
 	Controller2D controller;
@@ -47,16 +47,13 @@ public class BasicEnemy : MonoBehaviour
 		gravity = -(2 * 4) / Mathf.Pow (timeToJumpApex, 2);
 		controller = GetComponent<Controller2D>();
 		enemyImage = GetComponent<SpriteRenderer>();
+		matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
+		matDefault = enemyImage.material;
 		
 	}
 
 	void Update()
 	{
-		if(changeColor <= 0)
-			enemyImage.color = new Color (255,255,255,255);
-		else
-			changeColor -= Time.deltaTime;
-
 		scale = transform.localScale;	
 		// Directional movement -- BEGINNING
 		float distToPlayer = Vector2.Distance(agroView.transform.position, player.transform.position);
@@ -154,10 +151,15 @@ public class BasicEnemy : MonoBehaviour
 	public void TakeDamage(int damage)
 	{
 		health -= damage;
-		enemyImage.color = new Color (255,0,0,255);
-		changeColor = 0.2f;
+		enemyImage.material = matWhite;
+		Invoke("ResetMaterial", 0.2f);
 		// Use to spawn blood on hit: 
 		// Instantiate(bloodVFX, transform.position, Quaternion,identity);
+	}
+
+	public void ResetMaterial()
+	{
+		enemyImage.material = matDefault;
 	}
 
 	// Used to help visualize aggro range (yellow colored circle)

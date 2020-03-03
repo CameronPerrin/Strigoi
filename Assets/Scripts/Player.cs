@@ -20,7 +20,10 @@ public class Player : MonoBehaviour {
 	private float tempHealth;
 	private float bfTimer;
 	private float dashTrailCD;
+	private Material matWhite;
+	private Material matDefault;
 
+	public Renderer playerImage;
 	public Transform launchPos;	
 	public Animator animator;
 	public GameObject dashTrail;
@@ -56,11 +59,14 @@ public class Player : MonoBehaviour {
 
 	Controller2D controller;
 
-	void Start() {
+	void Start()
+	 {
 		controller = GetComponent<Controller2D> ();
 		gravity = -(2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
 		jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
 		health = maxHealth;
+		matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
+		matDefault = playerImage.material;
 	}
 
 	void Update() 
@@ -242,7 +248,18 @@ public class Player : MonoBehaviour {
   	public void TakeDamage(int damage)
 	{
 		health -= damage;
+		if(invinTime > 0);
+		else
+		{
+			playerImage.material = matWhite;
+			Invoke("ResetMaterial", 0.2f);
+		}
 		// Use to spawn blood on hit: 
 		// Instantiate(bloodVFX, transform.position, Quaternion,identity);
+	}
+
+	public void ResetMaterial()
+	{
+		playerImage.material = matDefault;
 	}
 }
