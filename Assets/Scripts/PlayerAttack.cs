@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
 {
     public Transform attackPos;
     public LayerMask whatIsEnemies;
-    public float CoolDownAmount = 1;
+    public float CoolDownAmount = 0.7f;
     public float attackRange;
     public float attackRangeDoubleClick;
     public int damage;
@@ -15,50 +15,35 @@ public class PlayerAttack : MonoBehaviour
     public bool singleMove;
     public bool doubleMove;
 
+
+
     [HideInInspector]
     public Animator playerAnimator;
 
-    private float timeSinceLastClick;
-	private const float DOUBLE_CLICK_TIME = 0.4f;
-	private float clickTime = 0;
+
+    private float clickTimer = 0; // use this for to delay damage after first click
     private float cd = 0;
 
     void Update()
     {
         // Initiate attack based off Cool Down first
         
-        	bool isAttack = playerAnimator.GetBool("isAttack");
-        	
+            bool isAttack = playerAnimator.GetBool("isAttack");
 
         	// first attack
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                singleMove = true; // set to true to enable movement for first attack
-
-                // First wave of attack
-                Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
-                for(int i = 0; i < enemiesToDamage.Length; i++)
+            //if(delayCheck < (Time.time-1)){
+                        //unlock attackOne and Two
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                   	enemiesToDamage[i].GetComponent<BasicEnemy>().TakeDamage(damage);
+                    Invoke("attackOne", 0.3f);
+                }
+                if (Input.GetKeyDown(KeyCode.Mouse0) && isAttack) //double click succeed
+                {
+                    Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAA");
+                    Invoke("attackTwo", 0.45f);         
                 }
 
-                // reset cool down
-                cd = CoolDownAmount;
-                Debug.Log("ATTACK GOING THROUGH");
-
-            }
-            if (Input.GetKeyDown(KeyCode.Mouse0) && isAttack) //double click succeed
-            {
-
-                doubleMove = true;// set to true to enable movement for second attack
-                Collider2D[] enemiesToDamageDA = Physics2D.OverlapCircleAll(attackPos.position, attackRangeDoubleClick, whatIsEnemies);
-                for (int i = 0; i < enemiesToDamageDA.Length; i++)
-                {
-                    enemiesToDamageDA[i].GetComponent<BasicEnemy>().TakeDamage(damageDoubleClick);
-                }
-
-                 Debug.Log("SECOND ATTACK HOE");
-            }
+            //}
     }
 
     // Used to visually represent the size of the collision circle spawned.
@@ -69,5 +54,26 @@ public class PlayerAttack : MonoBehaviour
         // is located at game object position and is modified with the circle radius,
         // "attack range".
         Gizmos.DrawWireSphere(attackPos.position, attackRange);
+    }
+
+    void attackOne()
+    {
+        // First wave of attack
+        singleMove = true; // set to true to enable movement for first attack
+        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
+        for(int i = 0; i < enemiesToDamage.Length; i++)
+        {
+             enemiesToDamage[i].GetComponent<BasicEnemy>().TakeDamage(damage);
+        }
+    }
+
+    void attackTwo()
+    {
+        doubleMove = true;// set to true to enable movement for second attack
+        Collider2D[] enemiesToDamageDA = Physics2D.OverlapCircleAll(attackPos.position, attackRangeDoubleClick, whatIsEnemies);
+        for (int i = 0; i < enemiesToDamageDA.Length; i++)
+        {
+            enemiesToDamageDA[i].GetComponent<BasicEnemy>().TakeDamage(damageDoubleClick);
+        }
     }
 }

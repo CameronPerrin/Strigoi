@@ -9,15 +9,10 @@ public class PlayerAttackAnimation : MonoBehaviour
     float clicktime = 0;
     float clickdelay = 0.4f;
     float doubleDelay;
+    float attackDelay;
     bool canDo = true;
     public Animator playerAnimator;
     //private bool waiting = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -26,6 +21,7 @@ public class PlayerAttackAnimation : MonoBehaviour
         {
             playerAnimator.SetBool("isAttack", true);
             Debug.Log("Start");
+
             clicked++;
             if (clicked == 1) clicktime = Time.time;
 
@@ -39,8 +35,8 @@ public class PlayerAttackAnimation : MonoBehaviour
                 Debug.Log("DOUBLE");
 
             }
-
         }
+
 
         if ((clicked != 0) && (clicked == 2 || Time.time - clicktime > clickdelay))
         {
@@ -54,17 +50,20 @@ public class PlayerAttackAnimation : MonoBehaviour
         if ((playerAnimator.GetBool("isAttackLonely")) && (Time.time - clicktime > 0.7f))
         {
             playerAnimator.SetBool("isAttackLonely", false);
+            playerAnimator.SetBool("isAttack", false);
         }
 
-        if (playerAnimator.GetBool("isAttackDouble") && (Time.time - doubleDelay > 0.6f))
+        if (playerAnimator.GetBool("isAttackDouble") && (Time.time - doubleDelay > 0.3f))
         {
             playerAnimator.SetBool("isAttackDouble", false);
+            playerAnimator.SetBool("isAttack", false);
             doubleDelay = 0;
         }
 
+
         //stop all movement and flipping
         //COMMIT THE PLAYER TO HIS ATTACK
-        //FUCK UP OR NOT
+        //heck UP OR NOT
         if(playerAnimator.GetBool("isAttackDouble") || playerAnimator.GetBool("isAttackLonely") || playerAnimator.GetBool("isAttack"))
         {
             GetComponent<Player>().moveSpeed = 0;
@@ -86,7 +85,5 @@ public class PlayerAttackAnimation : MonoBehaviour
             GetComponent<Player>().moveSpeed = 7;
             GetComponent<Player>().canFlip = true;
         }
-
-
     }
 }

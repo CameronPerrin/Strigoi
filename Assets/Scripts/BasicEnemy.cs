@@ -8,7 +8,9 @@ public class BasicEnemy : MonoBehaviour
 	public int health;
 	public Animator zombAnimator;
 	public SpriteRenderer enemyImage;
-
+	public GameObject bloodVFX;
+	public Transform chest;
+	
 	[SerializeField]
 	GameObject player;
 	[SerializeField]
@@ -26,6 +28,7 @@ public class BasicEnemy : MonoBehaviour
 	[SerializeField]
 	float attackTimer;
 
+	
 	
 	Vector3 velocity;
 	Vector3 scale;
@@ -153,8 +156,18 @@ public class BasicEnemy : MonoBehaviour
 		health -= damage;
 		enemyImage.material = matWhite;
 		Invoke("ResetMaterial", 0.2f);
+		if(isFacingRight)
+		{
+			velocity.x = 0;
+			velocity.x -= 10;
+		}
+		else
+		{
+			velocity.x = 0;
+			velocity.x += 10;
+		}
 		// Use to spawn blood on hit: 
-		// Instantiate(bloodVFX, transform.position, Quaternion,identity);
+		Instantiate(bloodVFX, chest.position, Quaternion.identity);
 	}
 
 	public void ResetMaterial()

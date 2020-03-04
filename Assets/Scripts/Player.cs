@@ -26,6 +26,7 @@ public class Player : MonoBehaviour {
 	public Renderer playerImage;
 	public Transform launchPos;	
 	public Animator animator;
+	public GameObject jumpDust;
 	public GameObject dashTrail;
 	public GameObject launchPuff;
 	public GameObject footDust;
@@ -92,6 +93,8 @@ public class Player : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Space) && controller.collisions.below)
 		{
 			velocity.y = jumpVelocity;
+			Vector3 pos = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
+			Instantiate(jumpDust, pos, Quaternion.identity);
 		}
 
 		// Double jumping
@@ -102,9 +105,13 @@ public class Player : MonoBehaviour {
 			Debug.Log("Double jump");
 		}
 		if(!controller.collisions.below)
+		{
 			footDust.SetActive(false);
+		}
 		else
+		{
 			footDust.SetActive(true);
+		}
 		float targetVelocityX = input.x * moveSpeed;
 		velocity.x = Mathf.SmoothDamp (velocity.x, targetVelocityX, ref velocityXSmoothing, 
 		(controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
@@ -262,4 +269,5 @@ public class Player : MonoBehaviour {
 	{
 		playerImage.material = matDefault;
 	}
+
 }
