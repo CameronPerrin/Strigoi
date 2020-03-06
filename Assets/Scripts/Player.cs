@@ -117,7 +117,11 @@ public class Player : MonoBehaviour {
 		(controller.collisions.below)?accelerationTimeGrounded:accelerationTimeAirborne);
 		velocity.y += gravity * Time.deltaTime;
 		controller.Move (velocity * Time.deltaTime);
-
+		
+		if(Input.GetKeyDown("r"))
+		{
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+		}
 		// Buffer Timer lower cd
 		if(bfTimer > 0)
 			bfTimer -= Time.deltaTime;	

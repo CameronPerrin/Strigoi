@@ -10,6 +10,7 @@ public class BasicEnemy : MonoBehaviour
 	public SpriteRenderer enemyImage;
 	public GameObject bloodVFX;
 	public Transform chest;
+	public GameObject bloodSplat;
 	
 	[SerializeField]
 	GameObject player;
@@ -93,6 +94,7 @@ public class BasicEnemy : MonoBehaviour
 			// Destroy if under 0
 			// Destroys (this current object, instantly)
 			Object.Destroy(this.gameObject);
+			Instantiate(bloodSplat, chest.position, Quaternion.Euler(new Vector3(0, 0, Random.Range(0,360))));
 		}
 		// Direction movement -- END
 
