@@ -6,12 +6,11 @@ using UnityEngine.SceneManagement;
 [RequireComponent (typeof (Controller2D))]
 public class Player : MonoBehaviour {
 
-	private bool isDashing = false;
-	public bool m_FacingRight = true;
+	private bool isDashing = false; 
 	private bool jumpCD;
 	private float move;
 	private float health;
-	private float cdPAScript; // Cool down from player Attack script value
+	private float cdPAScript;
 	private float cdMove;
 	private float cdDash;
 	private float cdHolyLight;
@@ -20,45 +19,56 @@ public class Player : MonoBehaviour {
 	private float tempHealth;
 	private float bfTimer;
 	private float dashTrailCD;
+	private float accelerationTimeAirborne = .2f;
+	private float accelerationTimeGrounded = .1f;
+	private float gravity;
+	private float jumpVelocity;
+	private float velocityXSmoothing;
 	private Material matWhite;
 	private Material matDefault;
+	private Controller2D controller;
 
-	public Renderer playerImage;
-	public Transform launchPos;	
-	public Animator animator;
+	[Header("--VISUAL EFFECTS")]
 	public GameObject jumpDust;
 	public GameObject dashTrail;
 	public GameObject launchPuff;
 	public GameObject footDust;
 	public GameObject HolyLightVFX;
+	[Header("--U.I. ELEMENTS")]
 	public Image healthOrb;
 	public Image button1Image;
 	public Image button2Image;
+	[Header("--JUMP ATTRIBUTES")]
 	public float jumpHeight = 4;
 	public float timeToJumpApex = .4f;
+	[Header("--MOVEMENT")]
 	public float moveSpeed = 6;
-	public float maxHealth = 50;
 	public float moveAttackRange = 5;
+	[Header("--HEALTH")]
+	public float maxHealth = 50;
+	[Header("--DASH ATTRIBUTES")]
 	public float dashCoolDown = 6;
 	public float dashStrength = 30;
+	[Header("--HOLY LIGHT")]
 	public float holyLightHealingStrength = 10;
 	public float holyLightCoolDown = 5;
+	[Header("--'I' FRAMES")]
 	public float invincibilityTimer = 2;
+	[Header("--BUFFER TIMER")]
 	public float abilityBufferTimer = 0.1f; // this should always be lower than any ability CD.
+	[Header("--MISC.")]
+	public Renderer playerImage;
+	public Transform launchPos;	
+	public Animator animator;
+	
 
 	[HideInInspector]
 	public bool canFlip = true;
-
-	float accelerationTimeAirborne = .2f;
-	float accelerationTimeGrounded = .1f;
-	
-
-	float gravity;
-	float jumpVelocity;
+	[HideInInspector]
+	public bool m_FacingRight = true;
+	[HideInInspector]
 	public Vector3 velocity;
-	float velocityXSmoothing;
-
-	Controller2D controller;
+	
 
 	void Start()
 	 {

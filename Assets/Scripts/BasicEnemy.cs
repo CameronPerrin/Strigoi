@@ -5,30 +5,25 @@ using UnityEngine.UI;
 [RequireComponent (typeof (Controller2D))]
 public class BasicEnemy : MonoBehaviour 
 {
+	[Header("--VISUAL EFFECTS")]
+	public GameObject bloodVFX;
+	public GameObject bloodSplat;
+	[Header("--HEALTH")]
 	public int health;
+	[Header("--DAMAGE ATTRIBUTES")]
+	public int damage;
+	public float attackRange;
+	public float attackTimer;
+	[Header("--AGGRO ATTRIBUTES")]
+	public float agroRange;
+	public float moveSpeed;
+	public GameObject agroView;
+	[Header("--MISC.")]
 	public Animator zombAnimator;
 	public SpriteRenderer enemyImage;
-	public GameObject bloodVFX;
 	public Transform chest;
-	public GameObject bloodSplat;
-	
-	[SerializeField]
-	GameObject player;
-	[SerializeField]
-	float agroRange;
-	[SerializeField]
-	float moveSpeed;
-	[SerializeField]
-	GameObject agroView;
-	[SerializeField]
-	int damage;
-	[SerializeField]
-	float attackRange;
-	[SerializeField]
-	LayerMask whatIsPlayer;
-	[SerializeField]
-	float attackTimer;
-
+	public GameObject player;
+	public LayerMask whatIsPlayer;
 	
 	
 	Vector3 velocity;

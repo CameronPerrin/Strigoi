@@ -4,19 +4,24 @@ using UnityEngine;
 
 
 public class PlayerAttack : MonoBehaviour
-{
-    public Transform attackPos;
-    public LayerMask whatIsEnemies;
-    public float CoolDownAmount = 0.7f;
+{    
+    [Header("--ATTACK RANGE")]
     public float attackRange;
     public float attackRangeDoubleClick;
+    [Header("--DAMAGE")]
     public int damage;
     public int damageDoubleClick;
+    [Header("--ENEMY SELECTION")]
+    public LayerMask whatIsEnemies;
+    [Header("--ATTACK POSITION")]
+    public Transform attackPos;
+    [Header("--MISC.")]
+    public float CoolDownAmount = 0.7f;
+
+    [HideInInspector]
     public bool singleMove;
+    [HideInInspector]
     public bool doubleMove;
-
-
-
     [HideInInspector]
     public Animator playerAnimator;
 
