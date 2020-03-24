@@ -55,7 +55,7 @@ public class Player : MonoBehaviour {
 	[Header("--'I' FRAMES")]
 	public float invincibilityTimer = 2;
 	[Header("--BUFFER TIMER")]
-	public float abilityBufferTimer = 0.1f; // this should always be lower than any ability CD.
+	public float abilityBufferTimer = 1f; // this should always be lower than any ability CD.
 	[Header("--MISC.")]
 	public Renderer playerImage;
 	public Transform launchPos;	
@@ -206,7 +206,7 @@ public class Player : MonoBehaviour {
 		}
 		if(invinTime > 0)
 		{
-			health = tempHealth;
+			//health = tempHealth;
 		}
 
 
@@ -268,10 +268,14 @@ public class Player : MonoBehaviour {
   	// Take damage
   	public void TakeDamage(int damage)
 	{
-		health -= damage;
-		if(invinTime > 0);
+		
+		if(invinTime > 0)
+        {
+			Debug.Log("dmg blocked idiot");
+        }
 		else
 		{
+			health -= damage;
 			playerImage.material = matWhite;
 			Invoke("ResetMaterial", 0.2f);
 		}
