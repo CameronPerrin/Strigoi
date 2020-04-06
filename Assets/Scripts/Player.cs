@@ -82,6 +82,8 @@ public class Player : MonoBehaviour {
 
 	void Update() 
 	{
+		if(PauseMenu.GameIsPaused == false)
+		{
 		
 		// Movement Animator
 		animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal")));
@@ -249,7 +251,7 @@ public class Player : MonoBehaviour {
       		health = maxHealth;
       	
 
-
+	}
 	}
 
 	private void Flip()
