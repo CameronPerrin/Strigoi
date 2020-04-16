@@ -17,6 +17,8 @@ public class PlayerAttackAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(PauseMenu.GameIsPaused == false)
+        {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             playerAnimator.SetBool("isAttack", true);
@@ -85,5 +87,6 @@ public class PlayerAttackAnimation : MonoBehaviour
             GetComponent<Player>().moveSpeed = 7;
             GetComponent<Player>().canFlip = true;
         }
+    }
     }
 }

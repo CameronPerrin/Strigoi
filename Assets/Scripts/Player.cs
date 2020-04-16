@@ -97,7 +97,8 @@ public class Player : MonoBehaviour {
 
 		// Player movement code
 		move = Input.GetAxisRaw("Horizontal");
-		if (controller.collisions.above || controller.collisions.below) {
+		if (controller.collisions.above || controller.collisions.below)
+		{
 			velocity.y = 0;
 		}
 		// Jumping
@@ -249,8 +250,6 @@ public class Player : MonoBehaviour {
       	// Make sure player does not have more than max health
       	if(health > maxHealth)
       		health = maxHealth;
-      	
-
 	}
 	}
 

@@ -31,6 +31,10 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
+        // making sure attack wont go through if the game is paused
+        if(PauseMenu.GameIsPaused == false)
+        {
+
         // Initiate attack based off Cool Down first
         
             bool isAttack = playerAnimator.GetBool("isAttack");
@@ -49,6 +53,7 @@ public class PlayerAttack : MonoBehaviour
                 }
 
             //}
+        }
     }
 
     // Used to visually represent the size of the collision circle spawned.
