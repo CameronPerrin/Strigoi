@@ -24,8 +24,8 @@ public class BasicEnemy : MonoBehaviour
 	public Transform chest;
 	public GameObject player;
 	public LayerMask whatIsPlayer;
-	
-	
+
+
 	Vector3 velocity;
 	Vector3 scale;
 
@@ -36,8 +36,8 @@ public class BasicEnemy : MonoBehaviour
 	float timeToJumpApex = .4f;
 	float cd;
 	Material matWhite;
-	Material matDefault;
-	bool isFacingRight = true;
+	Material matDefault;	
+	bool isFacingRight = true;	
 	
 	Controller2D controller;
 
@@ -48,7 +48,6 @@ public class BasicEnemy : MonoBehaviour
 		enemyImage = GetComponent<SpriteRenderer>();
 		matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
 		matDefault = enemyImage.material;
-		
 	}
 
 	void Update()

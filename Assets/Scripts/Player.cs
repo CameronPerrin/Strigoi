@@ -95,12 +95,22 @@ public class Player : MonoBehaviour {
 		// the attack speed in-game, so now it can update automatically.
 		cdPAScript = GetComponent<PlayerAttack>().CoolDownAmount;
 
+
+
 		// Player movement code
 		move = Input.GetAxisRaw("Horizontal");
 		if (controller.collisions.above || controller.collisions.below)
 		{
 			velocity.y = 0;
 		}
+
+		// Sound
+		if(controller.collisions.below && move != 0 && GetComponent<AudioSource>().isPlaying == false)
+		{
+			GetComponent<AudioSource>().Play();
+			GetComponent<AudioSource>().pitch = Random.Range(0.8f, 1);
+		}
+
 		// Jumping
 		Vector2 input = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
 		if (Input.GetKeyDown(KeyCode.Space) && controller.collisions.below)
