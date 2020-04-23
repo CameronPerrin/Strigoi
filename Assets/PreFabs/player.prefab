@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8629168398178631837}
   - component: {fileID: 8629168398178631904}
   - component: {fileID: -144273665402326180}
+  - component: {fileID: 6086611114234462907}
   - component: {fileID: 8629168398178631836}
   - component: {fileID: 8629168398178631911}
   - component: {fileID: 8629168398178631910}
@@ -131,10 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fee6f2ad40b80a46b8321e4baf2d29d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FacingRight: 1
-  playerImage: {fileID: 0}
-  launchPos: {fileID: 0}
-  animator: {fileID: 8629168398178631909}
+  jumpDust: {fileID: 0}
   dashTrail: {fileID: 0}
   launchPuff: {fileID: 0}
   footDust: {fileID: 0}
@@ -146,15 +144,19 @@ MonoBehaviour:
   jumpHeight: 2
   timeToJumpApex: 0.3
   moveSpeed: 7
-  maxHealth: 50
   moveAttackRange: 5
+  maxHealth: 50
   dashCoolDown: 2
   dashStrength: 30
   holyLightHealingStrength: 5
   holyLightCoolDown: 5
   invincibilityTimer: 2
   abilityBufferTimer: 0.1
+  playerImage: {fileID: 0}
+  launchPos: {fileID: 0}
+  animator: {fileID: 8629168398178631909}
   canFlip: 1
+  m_FacingRight: 1
   velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &8629168398178631904
 MonoBehaviour:
@@ -168,15 +170,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c032ed65f6cc48e44bf6eddb0be98232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPos: {fileID: 8629168398614955344}
-  whatIsEnemies:
-    serializedVersion: 2
-    m_Bits: 1024
-  CoolDownAmount: 1
   attackRange: 0.7
   attackRangeDoubleClick: 0
   damage: 5
   damageDoubleClick: 0
+  whatIsEnemies:
+    serializedVersion: 2
+    m_Bits: 1024
+  attackPos: {fileID: 8629168398614955344}
+  CoolDownAmount: 1
   singleMove: 0
   doubleMove: 0
   playerAnimator: {fileID: 0}
@@ -187,12 +189,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8629168398178631838}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b8d6b75f040cc040a6a949de00aaef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 0}
+--- !u!114 &6086611114234462907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8629168398178631838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff88a4bb37e1bde469e90e96fe4b609b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8629168398178631836
 MonoBehaviour:
   m_ObjectHideFlags: 0
