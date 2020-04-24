@@ -27,6 +27,7 @@ public class Player : MonoBehaviour {
 	private Material matWhite;
 	private Material matDefault;
 	private Controller2D controller;
+	private LayerMask mask;
 
 	[Header("--VISUAL EFFECTS")]
 	public GameObject jumpDust;
@@ -78,6 +79,7 @@ public class Player : MonoBehaviour {
 		health = maxHealth;
 		matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
 		matDefault = playerImage.material;
+		mask = LayerMask.GetMask("Obstacle");
 	}
 
 	void Update() 
@@ -261,6 +263,17 @@ public class Player : MonoBehaviour {
       	if(health > maxHealth)
       		health = maxHealth;
 	}
+		// Raycast for slowing pools
+		RaycastHit2D hit = Physics2D.Raycast(new Vector2 (this.transform.position.x, this.transform.position.y), -Vector2.up, 5f, mask);
+		//Debug.Log(hit.collider.name);
+		if(hit.collider.tag == "SwampGround")
+        {
+			moveSpeed = 2;
+        }
+        else
+        {
+			moveSpeed = 7;
+        }
 	}
 
 	private void Flip()
