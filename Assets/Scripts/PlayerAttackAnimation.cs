@@ -20,9 +20,9 @@ public class PlayerAttackAnimation : MonoBehaviour
         if(PauseMenu.GameIsPaused == false)
         {
         if (Input.GetKeyDown(KeyCode.Mouse0) && 
-        	!playerAnimator.GetBool("isAttackDouble") && 
-        	!playerAnimator.GetBool("isAttackLonely") &&
-        	!playerAnimator.GetBool("isAttack"))
+            !playerAnimator.GetBool("isAttackDouble") && 
+            !playerAnimator.GetBool("isAttackLonely") &&
+            !playerAnimator.GetBool("isAttack"))
         {
             playerAnimator.SetBool("isAttack", true);
             //Debug.Log("Start");
